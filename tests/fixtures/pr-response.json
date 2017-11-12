@@ -1,0 +1,103 @@
+{
+  "data": {
+    "user": {
+      "pullRequests": {
+        "nodes": [
+          {
+            "createdAt": "2017-10-20T12:00:00Z",
+            "title": "My PR 1",
+            "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/100",
+            "author": {
+              "login": "test-user"
+            },
+            "commits": {
+              "nodes": [
+                {
+                  "commit": {
+                    "message": "My commit 1",
+                    "status": {
+                      "state": "SUCCESS"
+                    }
+                  }
+                }
+              ]
+            },
+            "labels": {
+              "nodes": [
+                {
+                  "name": "Test label 1"
+                },
+                {
+                  "name": "Test label 2"
+                }
+              ]
+            },
+            "reviews": {
+              "nodes": [
+                {
+                  "createdAt": "2017-10-21T12:00:00Z",
+                  "state": "APPROVED",
+                  "author": {
+                    "login": "test-reviewer-2"
+                  }
+                },
+                {
+                  "createdAt": "2017-10-21T12:00:00Z",
+                  "state": "DISMISSED",
+                  "author": {
+                    "login": "test-reviewer-2"
+                  }
+                },
+                {
+                  "createdAt": "2017-10-21T12:00:00Z",
+                  "state": "CHANGES_REQUESTED",
+                  "author": {
+                    "login": "test-reviewer-1"
+                  }
+                }
+              ]
+            },
+            "reviewRequests": {
+              "nodes": [
+                {
+                  "reviewer": {
+                    "login": "test-reviewer-3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "createdAt": "2017-10-20T12:00:00Z",
+            "title": "My PR 2",
+            "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/200",
+            "author": {
+              "login": "test-user"
+            },
+            "commits": {
+              "nodes": [
+                {
+                  "commit": {
+                    "message": "My commit 2",
+                    "status": {
+                      "state": "FAILURE"
+                    }
+                  }
+                }
+              ]
+            },
+            "labels": {
+              "nodes": []
+            },
+            "reviews": {
+              "nodes": []
+            },
+            "reviewRequests": {
+              "nodes": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}

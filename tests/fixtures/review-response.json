@@ -1,0 +1,121 @@
+{
+  "data": {
+    "organization": {
+      "repositories": {
+        "nodes": [
+          {
+            "pullRequests": {
+              "nodes": [
+                {
+                  "title": "PR to review 1",
+                  "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/100",
+                  "reviews": {
+                    "nodes": []
+                  },
+                  "reviewRequests": {
+                    "nodes": [
+                      {
+                        "reviewer": {
+                          "login": "test-reviewer-2"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "PR to review 2",
+                  "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/200",
+                  "reviews": {
+                    "nodes": []
+                  },
+                  "reviewRequests": {
+                    "nodes": []
+                  }
+                },
+                {
+                  "title": "PR to review 3",
+                  "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/300",
+                  "reviews": {
+                    "nodes": []
+                  },
+                  "reviewRequests": {
+                    "nodes": [
+                      {
+                        "reviewer": {
+                          "login": "test-reviewer-2"
+                        }
+                      },
+                      {
+                        "reviewer": {
+                          "login": "test-reviewer-1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "PR to review 4",
+                  "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/400",
+                  "reviews": {
+                    "nodes": [
+                      {
+                        "createdAt": "2017-10-20T12:00:00Z",
+                        "state": "APPROVED",
+                        "author": {
+                          "login": "test-reviewer-1"
+                        }
+                      },
+                      {
+                        "createdAt": "2017-10-20T12:00:00Z",
+                        "state": "DISMISSED",
+                        "author": {
+                          "login": "test-reviewer-1"
+                        }
+                      }
+                    ]
+                  },
+                  "reviewRequests": {
+                    "nodes": [
+                      {
+                        "reviewer": {
+                          "login": "test-reviewer-3"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "pullRequests": {
+              "nodes": []
+            }
+          },
+          {
+            "pullRequests": {
+              "nodes": [
+                {
+                  "title": "PR to review 5",
+                  "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/500",
+                  "reviews": {
+                    "nodes": []
+                  },
+                  "reviewRequests": {
+                    "nodes": [
+                      {
+                        "reviewer": {
+                          "login": "test-reviewer-1"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
