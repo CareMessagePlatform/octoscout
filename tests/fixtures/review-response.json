@@ -10,7 +10,15 @@
                   "title": "PR to review 1",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/100",
                   "reviews": {
-                    "nodes": []
+                    "nodes": [
+                      {
+                        "createdAt": "2017-10-20T12:00:00Z",
+                        "state": "CHANGES_REQUESTED",
+                        "author": {
+                          "login": "test-reviewer-1"
+                        }
+                      }
+                    ]
                   },
                   "reviewRequests": {
                     "nodes": [
@@ -26,7 +34,15 @@
                   "title": "PR to review 2",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/200",
                   "reviews": {
-                    "nodes": []
+                    "nodes": [
+                      {
+                        "createdAt": "2017-10-20T12:00:00Z",
+                        "state": "APPROVED",
+                        "author": {
+                          "login": "test-reviewer-1"
+                        }
+                      }
+                    ]
                   },
                   "reviewRequests": {
                     "nodes": []
@@ -58,13 +74,6 @@
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/400",
                   "reviews": {
                     "nodes": [
-                      {
-                        "createdAt": "2017-10-20T12:00:00Z",
-                        "state": "APPROVED",
-                        "author": {
-                          "login": "test-reviewer-1"
-                        }
-                      },
                       {
                         "createdAt": "2017-10-20T12:00:00Z",
                         "state": "DISMISSED",

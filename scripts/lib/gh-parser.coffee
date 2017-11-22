@@ -17,7 +17,7 @@ ghParser =
           prReviews.review = { state: "PENDING" } if reviewRequest["reviewer"]["login"] == login
         for review in pr["reviews"]["nodes"]
           prReviews.review = { state: review["state"], createdAt: review["createdAt"] }
-        reviews.push prReviews if prReviews.review.state
+        reviews.push prReviews if prReviews.review.state in ["DISMISSED", "PENDING"]
     reviews
 
   pullRequest: (pr) ->
