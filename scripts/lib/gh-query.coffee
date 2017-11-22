@@ -72,7 +72,7 @@ ghQuery =
                 nodes {
                   title
                   url
-                  reviews(last:50, author:$login, states:[DISMISSED,PENDING]) {
+                  reviews(last:1, author:$login, states:[DISMISSED,PENDING,APPROVED,CHANGES_REQUESTED]) {
                     nodes {
                       createdAt
                       state
