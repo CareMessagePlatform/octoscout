@@ -3,6 +3,9 @@ ghQuery =
     createdAt
     title
     url
+    repository {
+      name
+    }
     author {
       login
     }
@@ -72,6 +75,9 @@ ghQuery =
                 nodes {
                   title
                   url
+                  repository {
+                    name
+                  }
                   reviews(last:1, author:$login, states:[DISMISSED,PENDING,APPROVED,CHANGES_REQUESTED]) {
                     nodes {
                       createdAt

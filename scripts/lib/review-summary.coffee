@@ -1,7 +1,7 @@
 reviewSummary =
   summary: (review) ->
     """
-      > *<#{review['url']}|#{review['title']}>*
+      > *#{review['repository']} - <#{review['url']}|#{review['title']}>*
       > #{review['review']['state']}
     """
 

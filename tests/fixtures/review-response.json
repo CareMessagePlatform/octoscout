@@ -9,6 +9,9 @@
                 {
                   "title": "PR to review 1",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/100",
+                  "repository": {
+                    "name": "real-test-repo"
+                  },
                   "reviews": {
                     "nodes": [
                       {
@@ -33,6 +36,9 @@
                 {
                   "title": "PR to review 2",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/200",
+                  "repository": {
+                    "name": "real-test-repo"
+                  },
                   "reviews": {
                     "nodes": [
                       {
@@ -51,6 +57,9 @@
                 {
                   "title": "PR to review 3",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/300",
+                  "repository": {
+                    "name": "real-test-repo"
+                  },
                   "reviews": {
                     "nodes": []
                   },
@@ -72,6 +81,9 @@
                 {
                   "title": "PR to review 4",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/400",
+                  "repository": {
+                    "name": "real-test-repo"
+                  },
                   "reviews": {
                     "nodes": [
                       {
@@ -107,6 +119,9 @@
                 {
                   "title": "PR to review 5",
                   "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/500",
+                  "repository": {
+                    "name": "real-test-repo"
+                  },
                   "reviews": {
                     "nodes": []
                   },

@@ -7,6 +7,9 @@
             "createdAt": "2017-10-20T12:00:00Z",
             "title": "My PR 1",
             "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/100",
+            "repository": {
+              "name": "real-test-repo"
+            },
             "author": {
               "login": "test-user"
             },
@@ -71,6 +74,9 @@
             "createdAt": "2017-10-20T12:00:00Z",
             "title": "My PR 2",
             "url": "https:\/\/github.com\/test-org\/test-repo\/pull\/200",
+            "repository": {
+              "name": "real-test-repo"
+            },
             "author": {
               "login": "test-user"
             },
