@@ -32,6 +32,10 @@ describe "github script", ->
       expect(room.messages[1][1]).to.have.string("<https://github.com/test-org/test-repo/pull/100|My PR 1>")
       expect(room.messages[2][1]).to.have.string("<https://github.com/test-org/test-repo/pull/200|My PR 2>")
 
+    it "returns pull requests projects", ->
+      expect(room.messages[1][1]).to.have.string("real-test-repo")
+      expect(room.messages[2][1]).to.have.string("real-test-repo")
+
     it "returns pull requests checks states", ->
       expect(room.messages[1][1]).to.have.string("Checks state is SUCCESS")
       expect(room.messages[2][1]).to.have.string("Checks state is FAILURE")
@@ -55,6 +59,11 @@ describe "github script", ->
       expect(room.messages[1][1]).to.have.string("<https://github.com/test-org/test-repo/pull/300|PR to review 3>")
       expect(room.messages[2][1]).to.have.string("<https://github.com/test-org/test-repo/pull/400|PR to review 4>")
       expect(room.messages[3][1]).to.have.string("<https://github.com/test-org/test-repo/pull/500|PR to review 5>")
+
+    it "returns pull requests projects", ->
+      expect(room.messages[1][1]).to.have.string("real-test-repo")
+      expect(room.messages[2][1]).to.have.string("real-test-repo")
+      expect(room.messages[3][1]).to.have.string("real-test-repo")
 
     it "returns review statuses", ->
       expect(room.messages[1][1]).to.have.string("PENDING")

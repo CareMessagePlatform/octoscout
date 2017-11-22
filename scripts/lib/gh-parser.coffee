@@ -11,6 +11,7 @@ ghParser =
         prReviews = {
           title: pr["title"]
           url: pr["url"]
+          repository: pr["repository"]["name"]
           review: {}
         }
         for reviewRequest in pr["reviewRequests"]["nodes"]
@@ -28,6 +29,7 @@ ghParser =
       status: this.status(pr["commits"]["nodes"][0]["commit"]["status"])
       title: pr["title"]
       url: pr["url"]
+      repository: pr["repository"]['name']
     }
 
   reviews: (reviews, requests) ->

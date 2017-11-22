@@ -3,7 +3,7 @@ timeago = require("timeago.js")
 prSummary =
   summary: (pr) ->
     """
-      > *<#{pr['url']}|#{pr['title']}>*
+      > *#{pr['repository']} - <#{pr['url']}|#{pr['title']}>*
       > Created #{timeago().format(pr['createdAt'])}
       > Checks state is #{pr['status']}
       > Labels: #{pr['labels'].join(', ')}
