@@ -4,6 +4,7 @@
 # Commands:
 #   octscout prs user:<login> - Responds with a summary of user open pull requests
 #   octscout reviews user:<login> - Responds with a summary of user requested reviews that are pending
+#   octscout set user:<login> - Define your github user
 #
 
 ghQuery = require("./lib/gh-query.coffee")
@@ -33,3 +34,8 @@ module.exports = (robot) ->
       .post(query) (err, result, body) ->
         reviews = ghParser.parseReviewRequests(body, login)
         res.send(reviewSummary.summary(review)) for review in reviews
+
+  robot.respond /set user:(.*)/, (res) ->
+    githubLogin = res.match[1]
+    res.message.user.githubLogin = githubLogin
+    res.send "Got it! You are #{githubLogin} on GitHub"

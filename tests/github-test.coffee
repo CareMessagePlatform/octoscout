@@ -69,3 +69,14 @@ describe "github script", ->
       expect(room.messages[1][1]).to.have.string("PENDING")
       expect(room.messages[2][1]).to.have.string("DISMISSED")
       expect(room.messages[3][1]).to.have.string("PENDING")
+
+  context "command set user:<user>", ->
+    beforeEach ->
+      room.user.say("bob", "@hubot set user:test-user")
+
+    it "replies to the command", ->
+      expect(room.messages[1][1]).to.have.string("You are test-user on GitHub")
+
+    it "sets the user", ->
+      console.log(room.robot.brain)
+      # expect(room.robot.brain.data.users[0].githubLogin).to.eql("test-user")
