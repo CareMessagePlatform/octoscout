@@ -1,7 +1,14 @@
 ghParser =
-  parsePullRequests: (body) ->
+  parseUserPullRequests: (body) ->
     data = JSON.parse(body)
     this.pullRequest(pr) for pr in data["data"]["user"]["pullRequests"]["nodes"]
+
+  parseTeamPullRequests: (body) ->
+    data = JSON.parse(body)
+    prs = []
+    for member in data["data"]["organization"]["team"]["members"]["nodes"]
+      prs.push this.pullRequest(pr) for pr in member["pullRequests"]["nodes"]
+    prs
 
   parseReviewRequests: (body, login) ->
     data = JSON.parse(body)

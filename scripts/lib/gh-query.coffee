@@ -64,6 +64,25 @@ ghQuery =
       }
     })
 
+  teamPullRequests: (organization, slug) ->
+    JSON.stringify({
+      query: """
+        query($organization: String!, $slug: String!) {
+          team(slug: $slug) {
+            members(last: 50) {
+              nodes {
+                #{this.pullRequestQuery}
+              }
+            }
+          }
+        }
+      """
+      variables: {
+        organization: organization,
+        slug: slug
+      }
+    })
+
   userReviewRequests: (login, organization) ->
     JSON.stringify({
       query: """

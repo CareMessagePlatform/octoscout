@@ -3,6 +3,7 @@
 #
 # Commands:
 #   octscout prs user:<login> - Responds with a summary of user open pull requests
+#   octscout prs team:<slug> - Responds with a summary of team open pull requests
 #   octscout reviews user:<login> - Responds with a summary of user requested reviews that are pending
 #
 
@@ -22,7 +23,16 @@ module.exports = (robot) ->
     robot.http("https://api.github.com/graphql")
       .header("Authorization", "bearer #{apiKey}")
       .post(query) (err, result, body) ->
-        prs = ghParser.parsePullRequests(body)
+        prs = ghParser.parseUserPullRequests(body)
+        res.send(prSummary.summary(pr)) for pr in prs
+
+  robot.respond /prs team:(.*)/, (res) ->
+    slug = res.match[1]
+    query = ghQuery.teamPullRequests(organization, slug)
+    robot.http("https://api.github.com/graphql")
+      .header("Authorization", "bearer #{apiKey}")
+      .post(query) (err, result, body) ->
+        prs = ghParser.parseTeamPullRequests(body)
         res.send(prSummary.summary(pr)) for pr in prs
 
   robot.respond /reviews user:(.*)/, (res) ->
