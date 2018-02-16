@@ -6,7 +6,8 @@
   "description": "Hubot that sends summary info about open PRs",
   "license": "MIT",
   "scripts": {
-    "test": "mocha --require coffee-script/register tests/*.coffee"
+    "test": "mocha --recursive --require coffee-script/register --require coffee-coverage/register-istanbul tests/*.coffee",
+    "test-with-coverage": "nyc --reporter=lcov mocha --recursive --require coffee-script/register --require coffee-coverage/register-istanbul tests/*.coffee"
   },
   "dependencies": {
     "hubot": "^2.19.0",
@@ -30,9 +31,11 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "coffee-coverage": "^3.0.0",
     "coffee-script": "^1.12.7",
     "hubot-test-helper": "^1.8.1",
     "mocha": "^4.0.1",
-    "nock": "^9.1.0"
+    "nock": "^9.1.0",
+    "nyc": "^11.4.1"
   }
 }

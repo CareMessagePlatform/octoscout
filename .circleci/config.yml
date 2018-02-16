@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.1.4
+        environment:
+          COVERAGE: true
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Download CodeClimate cc-test-reporter
+          command: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - run:
+          name: Make cc-test-reporter executable
+          command: chmod +x ./cc-test-reporter
+      - run:
+          name: Report before build to CodeClimate
+          command: ./cc-test-reporter before-build
+      - run:
+          name: Install nyc and coffee-coverage
+          command: npm install nyc coffee-coverage --save-dev
+
+      - run: npm run test-with-coverage
+
+      - run:
+          name: Upload coverage to CodeClimate
+          command: ./cc-test-reporter after-build --coverage-input-type lcov
