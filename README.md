@@ -9,6 +9,10 @@ It is built on the [Hubot][hubot] framework using the [hubot-slack][hubot-slack]
 
 Query given user open Pull Requests and sends a message with each pull request summary, containing check and review status
 
+  prs team:<github-slug>
+
+Query given team's open Pull Requests and sends a message with each pull request summary, containing check and review status
+
     reviews user:<github-login>
 
 Query given user pending Pull Request reviews.
