@@ -99,3 +99,10 @@ describe "github script", ->
       expect(room.messages[1][1]).to.have.string("PENDING")
       expect(room.messages[2][1]).to.have.string("DISMISSED")
       expect(room.messages[3][1]).to.have.string("PENDING")
+
+  context "command set user:<user>", ->
+    beforeEach ->
+      room.user.say("bob", "@hubot set user:bobGithub")
+
+    it "sets value on brain so we can find slack user from github user", ->
+      expect(room.robot.brain.get("github-users-bobGithub")).to.equal("bob")
