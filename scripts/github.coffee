@@ -7,8 +7,10 @@
 #   octscout reviews user:<login> - Responds with a summary of user requested reviews that are pending
 #
 
+ghHookParser = require("./lib/gh-hook-parser.coffee")
 ghQuery = require("./lib/gh-query.coffee")
 ghParser = require("./lib/gh-parser.coffee")
+hookSummary = require("./lib/hook-summary.coffee")
 prSummary = require("./lib/pr-summary.coffee")
 reviewSummary = require("./lib/review-summary.coffee")
 
@@ -56,3 +58,11 @@ module.exports = (robot) ->
     login = res.match[1]
     setGithubUser(login, res.message.user.name)
     res.send "Got it! You are #{login} on GitHub."
+
+  robot.router.post "/hubot/gh", (req, res) ->
+    data = ghHookParser.parseHookRequest(req)
+    if data
+      user = getGithubUser(data.user)
+      text = hookSummary.summary(data)
+      robot.messageRoom("@#{user}", text) if text? && user?
+    res.send "OK"

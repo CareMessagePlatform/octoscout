@@ -10,6 +10,7 @@
     "test-with-coverage": "nyc --reporter=lcov mocha --recursive --require coffee-script/register --require coffee-coverage/register-istanbul tests/*.coffee"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "^0.2.7",
@@ -36,6 +37,7 @@
     "hubot-test-helper": "^1.8.1",
     "mocha": "^4.0.1",
     "nock": "^9.1.0",
-    "nyc": "^11.4.1"
+    "nyc": "^11.4.1",
+    "request": "^2.83.0"
   }
 }
