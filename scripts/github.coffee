@@ -12,10 +12,18 @@ ghParser = require("./lib/gh-parser.coffee")
 prSummary = require("./lib/pr-summary.coffee")
 reviewSummary = require("./lib/review-summary.coffee")
 
+BRAIN_GITHUB_USERS_KEY = "github-users"
+
 module.exports = (robot) ->
 
   organization = process.env.GITHUB_ORGANIZATION
   apiKey = process.env.GITHUB_API_TOKEN
+
+  getGithubUser = (github_login) ->
+    robot.brain.get("#{BRAIN_GITHUB_USERS_KEY}-#{github_login}")
+
+  setGithubUser = (github_login, slack_user) ->
+    robot.brain.set("#{BRAIN_GITHUB_USERS_KEY}-#{github_login}", slack_user)
 
   robot.respond /prs user:(.*)/, (res) ->
     login = res.match[1]
@@ -43,3 +51,8 @@ module.exports = (robot) ->
       .post(query) (err, result, body) ->
         reviews = ghParser.parseReviewRequests(body, login)
         res.send(reviewSummary.summary(review)) for review in reviews
+
+  robot.respond /set user:(.*)/, (res) ->
+    login = res.match[1]
+    setGithubUser(login, res.message.user.name)
+    res.send "Got it! You are #{login} on GitHub."
