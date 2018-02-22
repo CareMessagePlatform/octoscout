@@ -5,6 +5,7 @@
 #   octscout prs user:<login> - Responds with a summary of user open pull requests
 #   octscout prs team:<slug> - Responds with a summary of team open pull requests
 #   octscout reviews user:<login> - Responds with a summary of user requested reviews that are pending
+#   octscout set user:<login> - Sets a user github login so it is possible to link the slack user to his github
 #
 
 ghHookParser = require("./lib/gh-hook-parser.coffee")
