@@ -68,10 +68,16 @@ ghQuery =
     JSON.stringify({
       query: """
         query($organization: String!, $slug: String!) {
-          team(slug: $slug) {
-            members(last: 50) {
-              nodes {
-                #{this.pullRequestQuery}
+          organization(login: $organization) {
+            team(slug: $slug) {
+              members(last: 50) {
+                nodes {
+                  pullRequests(states:OPEN, last:50, orderBy:{field:CREATED_AT, direction:DESC}) {
+                    nodes {
+                     #{this.pullRequestQuery}
+                    }
+                  }
+                }
               }
             }
           }
