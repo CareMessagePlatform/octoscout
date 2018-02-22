@@ -9,7 +9,7 @@ It is built on the [Hubot][hubot] framework using the [hubot-slack][hubot-slack]
 
 Query given user open Pull Requests and sends a message with each pull request summary, containing check and review status
 
-  prs team:<github-slug>
+    prs team:<github-slug>
 
 Query given team's open Pull Requests and sends a message with each pull request summary, containing check and review status
 
@@ -29,7 +29,7 @@ Some enviroment variables are required for octoscout to run properly
     GITHUB_API_TOKEN: The Github API token used to query Github API
     HUBOT_SLACK_TOKEN: The Slack bot token
 
-You can create a github API token at [Github settings page][github-token]
+You can create a github API token at [Github settings page][github-token]. The token permissions should include the full `repo` scope and the `read:org` permission to the `admin:org` scope.
 
 Instructions to create a Slack token can be found at [hubot-slack page][hubot-slack] under Requirements and Installation
 
