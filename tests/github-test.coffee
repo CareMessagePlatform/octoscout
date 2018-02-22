@@ -1,10 +1,16 @@
 Helper = require("hubot-test-helper")
 chai = require("chai")
+crypto = require("crypto")
+http = require("http")
 nock = require("nock")
+request = require("request")
 
 expect = chai.expect
 
 helper = new Helper("../scripts/github.coffee")
+
+process.env.EXPRESS_PORT = 8080
+process.env.GITHUB_WEBHOOK_SECRET = "SECRET"
 
 describe "github script", ->
 
@@ -106,3 +112,71 @@ describe "github script", ->
 
     it "sets value on brain so we can find slack user from github user", ->
       expect(room.robot.brain.get("github-users-bobGithub")).to.equal("bob")
+
+  context "post /hook/gh", ->
+    doRequest = (eventType, secret, jsonModifier, cb) ->
+      bodyJson = require("./fixtures/gh-webhooks/#{eventType}.json")
+      bodyJson = jsonModifier?(bodyJson) || bodyJson
+      signature = "sha1=" + crypto.createHmac("sha1", secret).update(JSON.stringify(bodyJson)).digest("hex")
+      request({
+        method: "POST",
+        uri: "http://localhost:8080/hubot/gh",
+        headers: {
+          "x-github-event": eventType
+          "x-hub-signature": signature
+        }
+        body: bodyJson
+        json: true
+      }, (_error, response) => cb(response))
+
+    beforeEach ->
+      nock.enableNetConnect("localhost")
+
+    context "status update", ->
+      doStatusRequest = (status, cb) ->
+        doRequest(
+          "status",
+          "SECRET",
+          (json) => json["state"] = status; json
+          (response) => cb(response)
+        )
+
+      beforeEach ->
+        room.user.say("bob", "@hubot set user:username")
+
+      for status in ["failure", "error"]
+        do (status) ->
+          context "when status is #{status}", ->
+            beforeEach (done) ->
+              doStatusRequest(status, (@response) => done())
+
+            it "sends status update message", ->
+              lastMessage = room.messages[-1..][0]
+              expect(lastMessage[1]).have.string("Status update for commit")
+              expect(lastMessage[1]).have.string(status.toUpperCase())
+
+      for status in ["pending", "success"]
+        do (status) ->
+          context "when status is #{status}", ->
+            beforeEach (done) ->
+              doStatusRequest(status, (@response) => done())
+
+            it "does not send status update message", ->
+              # There's already 2 messages in room when setting the user
+              expect(room.messages.length).to.equal(2)
+
+    context "invalid github signature", ->
+      beforeEach (done) ->
+        room.user.say("bob", "@hubot set user:username")
+        doRequest(
+          "status",
+          "WRONG_SECRET",
+          null
+          (@response) => done()
+        )
+
+      it "does not send message", ->
+        # There's already 2 messages in room when setting the user
+        expect(room.messages.length).to.equal(2)
+
+
