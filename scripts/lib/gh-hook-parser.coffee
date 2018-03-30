@@ -11,7 +11,10 @@ ghHookParser =
     github_signature = request.headers["x-hub-signature"]
     payload = JSON.stringify(request.body)
     sig = "sha1=" + crypto.createHmac("sha1", GITHUB_WEBHOOK_SECRET).update(payload).digest("hex")
-    github_signature is sig
+    if github_signature is sig
+      true
+    else
+      throw "Invalid signature: #{github_signature} / #{sig}"
 
   status: (data) ->
     {

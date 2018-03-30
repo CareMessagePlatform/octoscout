@@ -179,4 +179,7 @@ describe "github script", ->
         # There's already 2 messages in room when setting the user
         expect(room.messages.length).to.equal(2)
 
+      it "responds with error", ->
+        expect(@response.statusCode).to.equal(500)
+
 
