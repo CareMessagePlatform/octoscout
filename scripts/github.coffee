@@ -57,13 +57,13 @@ module.exports = (robot) ->
 
   robot.respond /set user:(.*)/, (res) ->
     login = res.match[1]
-    setGithubUser(login, res.message.user.name)
+    setGithubUser(login, res.message.user.id)
     res.send "Got it! You are #{login} on GitHub."
 
   robot.router.post "/hubot/gh", (req, res) ->
     data = ghHookParser.parseHookRequest(req)
     if data
-      user = getGithubUser(data.user)
+      userId = getGithubUser(data.user)
       text = hookSummary.summary(data)
-      robot.messageRoom("@#{user}", text) if text? && user?
+      robot.messageRoom("#{userId}", text) if text? && userId?
     res.send "OK"
