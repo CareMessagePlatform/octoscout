@@ -22,7 +22,7 @@ ghParser =
           review: {}
         }
         for reviewRequest in pr["reviewRequests"]["nodes"]
-          prReviews.review = { state: "PENDING" } if reviewRequest["reviewer"]["login"] == login
+          prReviews.review = { state: "PENDING" } if reviewRequest["requestedReviewer"]["login"] == login
         for review in pr["reviews"]["nodes"]
           prReviews.review = { state: review["state"], createdAt: review["createdAt"] }
         reviews.push prReviews if prReviews.review.state in ["DISMISSED", "PENDING"]
@@ -42,7 +42,7 @@ ghParser =
   reviews: (reviews, requests) ->
     a = {}
     a[review["author"]["login"]] = { state: review["state"], createdAt: review["createdAt"] } for review in reviews
-    a[request["reviewer"]["login"]] = { state: "PENDING" } for request in requests
+    a[request["requestedReviewer"]["login"]] = { state: "PENDING" } for request in requests
     a
 
   status: (status) ->
