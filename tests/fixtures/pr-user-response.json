@@ -63,7 +63,7 @@
             "reviewRequests": {
               "nodes": [
                 {
-                  "reviewer": {
+                  "requestedReviewer": {
                     "login": "test-reviewer-3"
                   }
                 }

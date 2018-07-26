@@ -39,8 +39,10 @@ ghQuery =
     }
     reviewRequests(last:50) {
       nodes {
-        reviewer {
-          login
+        requestedReviewer {
+          ... on User {
+            login
+          }
         }
       }
     }
@@ -114,8 +116,10 @@ ghQuery =
                   }
                   reviewRequests(last:50) {
                     nodes {
-                      reviewer {
-                        login
+                      requestedReviewer {
+                        ... on User {
+                          login
+                        }
                       }
                     }
                   }
