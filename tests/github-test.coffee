@@ -17,7 +17,7 @@ describe "github script", ->
   room = null
 
   beforeEach ->
-    room = helper.createRoom()
+    room = helper.createRoom({ name: 'bob' })
     do nock.disableNetConnect
 
   afterEach ->

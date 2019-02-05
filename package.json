@@ -15,7 +15,7 @@
     "hubot-help": "^0.2.2",
     "hubot-heroku-keepalive": "^1.0.3",
     "hubot-redis-brain": "0.0.4",
-    "hubot-slack": "^4.4.0",
+    "hubot-slack": "^4.6.0",
     "timeago.js": "^3.0.2"
   },
   "engines": {
@@ -23,13 +23,13 @@
     "npm": "6.1.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "coffee-coverage": "^2.0.1",
     "coffee-script": "^1.12.7",
-    "hubot-test-helper": "^1.8.1",
-    "mocha": "^4.0.1",
-    "nock": "^9.1.0",
-    "nyc": "^11.4.1",
-    "request": "^2.83.0"
+    "hubot-test-helper": "^1.9.0",
+    "mocha": "^4.1.0",
+    "nock": "^9.6.1",
+    "nyc": "^11.9.0",
+    "request": "^2.88.0"
   }
 }
