@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
-    "hubot": "^2.19.0",
+    "hubot": "^3.3.2",
     "hubot-help": "^0.2.2",
     "hubot-heroku-keepalive": "^1.0.3",
     "hubot-redis-brain": "0.0.4",
