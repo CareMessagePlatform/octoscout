@@ -27,7 +27,7 @@
     "coffee-coverage": "^2.0.1",
     "coffee-script": "^1.12.7",
     "hubot-test-helper": "^1.8.1",
-    "mocha": "^4.0.1",
+    "mocha": "^7.1.0",
     "nock": "^9.1.0",
     "nyc": "^11.9.0",
     "request": "^2.83.0"
